@@ -51,7 +51,6 @@ function set-DayMode($recordPath = '.\record.txt'){
     get-process -Name 'Dimmer'|Where-Object{$_.Path -eq "C:\Users\LargeQuinzhee\Desktop\dimmer\Dimmer.exe"}|Stop-Process
     Set-Content -Path $recordPath -Value "Day"
 }
-
 function switch-mode($recordPath = '.\record.txt'){
     $record = get-record
 

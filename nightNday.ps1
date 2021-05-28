@@ -38,6 +38,7 @@ function set-NightMode($recordPath = '.\ancillary_files\record.txt'){
 
     Start-Sleep -Seconds 3
     #set-nightlight -mode 'night' #sets nightlight on
+    Copy-Item -Path .\ancillary_files\nightSettings.json -Destination .\ancillary_files\dimmer\Dimmer.json -Force
     while($null -eq (Get-Process -Name *dimmer*)){
         Invoke-Item ".\ancillary_files\dimmer\Dimmer.exe"
     }

@@ -1,4 +1,4 @@
-function get-record($path = '.\record.txt'){
+function get-record($path = '.\ancillary_files\record.txt'){
     $fileRecord = Get-content $path
     if($fileRecord -eq "day"){
         return "day"
@@ -32,21 +32,26 @@ function set-nightlight(){
     }
     else{Write-Error "No affect made"}
 }
-function set-NightMode($recordPath = '.\record.txt'){
+function set-NightMode($recordPath = '.\ancillary_files\record.txt'){
     #$nightSetting = ([byte[]](2,0,0,0,199,91,231,198,81,107,210,1,0,0,0,0,67,66,1,0,2,1,202,20,14,21,0,202,30,14,7,0,207,40,208,15,202,50,14,16,46,49,0,202,60,14,8,46,47,0,0))
-    Start-Process -FilePath '.\night.bat' -WindowStyle Hidden #switches projection
+    Start-Process -FilePath '.\ancillary_files\night.bat' -WindowStyle Hidden #switches projection
+
+    Start-Sleep -Seconds 3
     #set-nightlight -mode 'night' #sets nightlight on
-    Invoke-Item "C:\Users\LargeQuinzhee\Desktop\dimmer\Dimmer.exe"
+    while($null -eq (Get-Process -Name *dimmer*)){
+        Invoke-Item ".\ancillary_files\dimmer\Dimmer.exe"
+    }
     Set-Content -Path $recordPath -Value "night"
 }
-function set-DayMode($recordPath = '.\record.txt'){
+function set-DayMode($recordPath = '.\ancillary_files\record.txt'){
     #$baseData.daySetting = ([byte[]](0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
-    Start-Process -FilePath '.\day.bat' -WindowStyle Hidden #switches projection
+    Start-Process -FilePath '.\ancillary_files\day.bat' -WindowStyle Hidden #switches projection
+    Start-Sleep -Seconds 3
     #set-nightlight -mode 'day' #sets nightlight off
-    get-process -Name 'Dimmer'|Where-Object{$_.Path -eq "C:\Users\LargeQuinzhee\Desktop\dimmer\Dimmer.exe"}|Stop-Process
+    get-process -Name 'Dimmer'|<#Where-Object{$_.Path -eq ".\ancillary_files\dimmer\Dimmer.exe"}|#>Stop-Process
     Set-Content -Path $recordPath -Value "day"
 }
-function switch-mode($recordPath = '.\record.txt'){
+function switch-mode($recordPath = '.\ancillary_files\record.txt'){
     $record = get-record -path $recordPath
 
     if($record -eq "day"){

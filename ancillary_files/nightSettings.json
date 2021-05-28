@@ -1,0 +1,28 @@
+{
+    "Position":{
+      "Left":1615,
+      "Top":705
+    },
+    "ShowIds":false,
+    "AutoRun":{
+      "On":false,
+      "AllUsers":false,
+      "Mode":"StartupFolder"
+    },
+    "MovableWindow":true,
+    "StartMinimised":false,
+    "NonDimmableWindow":true,
+    "PixelSnapping":false,
+    "LayoutRounding":false,
+    "Screens":[
+      {
+        "Id":1,
+        "On":true,
+        "Dim":80,
+        "Tint":"000000",
+        "PixelSnapping":false,
+        "LayoutRounding":false
+      }
+    ],
+    "LastRun":"5/28/2021 12:27:07 AM"
+  }

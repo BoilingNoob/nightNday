@@ -18,7 +18,7 @@
       {
         "Id":1,
         "On":true,
-        "Dim":80,
+        "Dim":85,
         "Tint":"000000",
         "PixelSnapping":false,
         "LayoutRounding":false

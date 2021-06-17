@@ -1,10 +1,13 @@
-function getFriendlyName($id) {
+function get-FriendlyName() {
+    param(
+        $id = [audio]::GetDefault(0)
+    )
     # [audio]::GetDefault(0) #this is the speaker
     # [audio]::GetDefault(1) #this is the mic
     $reg = "HKLM:\SYSTEM\CurrentControlSet\Enum\SWD\MMDEVAPI\$id"
     return (get-ItemProperty $reg).FriendlyName
 }
-Export-ModuleMember -Function getFriendlyName
+Export-ModuleMember -Function get-FriendlyName
 function switch-mode($recordPath = '.\ancillary_files\record.txt'){
     $record = get-record -path $recordPath
 

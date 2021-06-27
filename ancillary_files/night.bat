@@ -1,2 +1,3 @@
 rem %windir%\System32\DisplaySwitch.exe /clone
-%windir%\System32\DisplaySwitch.exe /external
+rem %windir%\System32\DisplaySwitch.exe /external
+%windir%\System32\DisplaySwitch.exe /internal

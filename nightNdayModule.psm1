@@ -15,6 +15,7 @@ function switch-mode($recordPath = '.\ancillary_files\record.txt'){
     }
 }
 Export-ModuleMember -Function switch-mode
+
 function set-DayMode($recordPath = '.\ancillary_files\record.txt'){
     #$baseData.daySetting = ([byte[]](0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0))
     Start-Process -FilePath '.\ancillary_files\day.bat' -WindowStyle Hidden #switches projection
@@ -25,6 +26,7 @@ function set-DayMode($recordPath = '.\ancillary_files\record.txt'){
     Set-Content -Path $recordPath -Value "day"
 }
 Export-ModuleMember -Function set-DayMode
+
 function set-NightMode($recordPath = '.\ancillary_files\record.txt'){
     #$nightSetting = ([byte[]](2,0,0,0,199,91,231,198,81,107,210,1,0,0,0,0,67,66,1,0,2,1,202,20,14,21,0,202,30,14,7,0,207,40,208,15,202,50,14,16,46,49,0,202,60,14,8,46,47,0,0))
     Start-Process -FilePath '.\ancillary_files\night.bat' -WindowStyle Hidden #switches projection
@@ -38,6 +40,7 @@ function set-NightMode($recordPath = '.\ancillary_files\record.txt'){
     Set-Content -Path $recordPath -Value "night"
 }
 Export-ModuleMember -Function set-NightMode
+
 function set-nightlight(){
     #$regPath = 'HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\CloudStore\Store\Cache\DefaultAccount\$$windows.data.bluelightreduction.settings\Current'
     #$nightSetting = ([byte[]](2,0,0,0,199,91,231,198,81,107,210,1,0,0,0,0,67,66,1,0,2,1,202,20,14,21,0,202,30,14,7,0,207,40,208,15,202,50,14,16,46,49,0,202,60,14,8,46,47,0,0))
@@ -61,6 +64,7 @@ function set-nightlight(){
     else{Write-Error "No affect made"}
 }
 Export-ModuleMember -Function set-nightlight
+
 function get-record($path = '.\ancillary_files\record.txt'){
     $fileRecord = Get-content $path
     if($fileRecord -eq "day"){
@@ -74,6 +78,7 @@ function get-record($path = '.\ancillary_files\record.txt'){
     }
 }
 Export-ModuleMember -Function get-record
+
 function get-audioFriendlyName() {
     param(
         $id = [audio]::GetDefault(0)
@@ -105,6 +110,7 @@ $audioNamesValues = @{
     }
 }
 Export-ModuleMember -Variable audioNamesValues
+
 Function Set-SoundVolume 
 {
     Param(
